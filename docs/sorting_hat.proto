@@ -1,0 +1,29 @@
+syntax = "proto3";
+package sortinghat;
+option go_package = "github.com/peake100/gRPEAKEC-go/zdocs/examples/protogen";
+
+import "google/protobuf/wrappers.proto";
+
+// House is the house a Wizard is getting sorted into.
+enum House {
+  Gryffindor = 0;
+  Hufflepuff = 1;
+  Ravenclaw = 2;
+  Slytherin = 3;
+}
+
+// Pupil is the wizard-to-be for sorting.
+message Pupil {
+  string name = 1;
+}
+
+// Sorted returns the House the pupil has been placed into.
+message Sorted {
+  House house = 1;
+}
+
+// SortingHat sorts pupils into houses
+service SortingHat {
+  // Sort sorts the pupil into a house.
+  rpc Sort (Pupil) returns (Sorted);
+}

@@ -47,13 +47,20 @@ message Error {
   // message is the error message.
   string message  = 6;
 
+  // source_err is a string representation of the original native error that lead to
+  // this gRPEAKEC Error. Can be blank.
+  string source_error = 7;
+
+  // source_type is the type of source_err. Can be blank.
+  string source_type = 8;
+
   // time is the time that the error occurred
-  google.protobuf.Timestamp time = 7;
+  google.protobuf.Timestamp time = 9;
 
   // details are arbitrary information about the error.
-  repeated google.protobuf.Any details = 8;
+  repeated google.protobuf.Any details = 10;
 
   // Trace holds a stack of TraceInfo objects. Each time an app encounters an error,
   // it can add it's TraceInfo object to the end of the trace.
-  repeated TraceInfo trace = 9;
+  repeated TraceInfo trace = 11;
 }
